@@ -1,0 +1,21 @@
+plugins {
+  id 'com.palantir.docker' version '0.25.0'
+}
+
+version = '0.1'
+
+task clean(type: Delete) {
+    delete "$buildDir"
+}
+
+docker {
+    dependsOn clean
+    name "cltl/demo:${project.version}"
+    files fileTree("$rootDir") {
+        include "src"
+        include "config"
+        include "requirements.txt"
+    }
+}
+
+defaultTasks 'docker'

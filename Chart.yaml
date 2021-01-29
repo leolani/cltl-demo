@@ -1,0 +1,15 @@
+apiVersion: v2
+name: demo
+description: A Helm Demo application
+
+type: application
+version: 0.1.0
+appVersion: 0.1.0
+
+dependencies:
+- name: rabbitmq
+  version: "8.6.1"
+  repository: "https://charts.bitnami.com/bitnami"
+- name: kubernetes-dashboard
+  version: "~3.0.2"
+  repository: "https://kubernetes.github.io/dashboard"
