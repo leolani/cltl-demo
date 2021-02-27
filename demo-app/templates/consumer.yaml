@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-consumer
+spec:
+  selector:
+    matchLabels:
+      app: demo-consumer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demo-consumer
+    spec:
+      containers:
+      - name: demo-consumer
+        image: cltl/demo-consumer:0.0.dev1
