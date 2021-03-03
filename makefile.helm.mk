@@ -13,10 +13,13 @@ run:
 	kubectl cluster-info
 	helm install $(project_name) $(project_root)/$(project_name)/$(project_chart)
 
+.PHONY: kube-dashboard
+kube-dashboard:
 	$(info Log in token for kubernetes dashboard:)
 	@kubectl -n kube-system describe secret \
-		$(shell kubectl -n kube-system get secret | awk '/^deployment-controller-token-/{print $$1}') \
+		$(shell kubectl -n kube-system get secret | awk '/^admin-token-/{print $$1}') \
 		| awk '$$1=="token:"{print $$2}' | head -n 1
+	kubectl proxy
 
 .PHONY: stop
 stop:

@@ -15,3 +15,10 @@ spec:
       containers:
       - name: demo-producer
         image: cltl/demo-producer:0.0.dev1
+        volumeMounts:
+          - name: cltl-config
+            mountPath: /cltl_config
+      volumes:
+        - name: cltl-config
+          configMap:
+            name: cltl-config

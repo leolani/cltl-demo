@@ -15,3 +15,10 @@ spec:
       containers:
       - name: demo-consumer
         image: cltl/demo-consumer:0.0.dev1
+        volumeMounts:
+          - name: cltl-config
+            mountPath: /cltl_k8_config
+      volumes:
+        - name: cltl-config
+          configMap:
+            name: cltl-config

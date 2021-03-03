@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cltl-config
+data:
+  default: |
+      name: test
+  cltl.event.kombu: |
+      server: amqp://cltl:cltl@cltl-demo-rabbitmq:5672
+      xchange: cltl.combot
+      type: direct
+      compression: bzip2
