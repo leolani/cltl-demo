@@ -7,9 +7,10 @@ project_chart ?= demo-app
 
 .PHONY: run
 run:
-	#kind create cluster --name $(project_name)
-	#docker images  --filter "reference=cltl/*" --format "{{.Repository}}:{{.Tag}}" | \
-	#	xargs -L 1 kind --name $(project_name) load docker-image
+	# TODO move from docker desktop to kind to setup a local cluster
+	# kind create cluster --name $(project_name)
+	# docker images  --filter "reference=cltl/*" --format "{{.Repository}}:{{.Tag}}" | \
+	# 	xargs -L 1 kind --name $(project_name) load docker-image
 	kubectl cluster-info
 	helm install $(project_name) $(project_root)/$(project_name)/$(project_chart)
 
@@ -23,4 +24,5 @@ kube-dashboard:
 
 .PHONY: stop
 stop:
-	kind delete cluster --name $(project_name)
+	#kind delete cluster --name $(project_name)
+	helm uninstall $(project_name)
