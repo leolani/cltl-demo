@@ -17,7 +17,7 @@ spec:
         image: cltl/demo-producer:0.0.dev1
         volumeMounts:
           - name: cltl-config
-            mountPath: /cltl_config
+            mountPath: /cltl_k8_config
       volumes:
         - name: cltl-config
           configMap:

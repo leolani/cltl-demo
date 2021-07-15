@@ -3,10 +3,15 @@ kind: ConfigMap
 metadata:
   name: cltl-config
 data:
-  default: |
+  DEFAULT: |
       name: test
   cltl.event.kombu: |
       server: amqp://cltl:cltl@cltl-demo-rabbitmq:5672
-      xchange: cltl.combot
+      exchange: cltl.combot
       type: direct
       compression: bzip2
+  cltl.demo.events: |
+      producer_topic: cltl.demo.producer
+      consumer_topic_in: cltl.demo.producer
+      consumer_topic_out: cltl.demo.consumer_out
+      duration: 600
